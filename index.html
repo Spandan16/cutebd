@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CUTE BD</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="generator" content="nopCommerce">
+    
+    
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link href="css/Content-styles.css" rel="stylesheet" type="text/css">
+<link href="css/Content-responsive.css" rel="stylesheet" type="text/css">
+<link href="css/2014.1.318-kendo.common.min.css" rel="stylesheet" type="text/css">
+<link href="css/2014.1.318-kendo.bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/2014.1.318-kendo.rtl.min.css" rel="stylesheet" type="text/css">
+<link href="css/smoothness-jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css">
+<link href="css/nivoslider-nivo-slider.css" rel="stylesheet" type="text/css">
+<link href="css/default-default.css" rel="stylesheet" type="text/css">
+<link href="css/magnific-popup-magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <script src="js/2.0.0-jquery.min.js" type="text/javascript"></script>
+<script src="js/Scripts-jquery.validate.min.js" type="text/javascript"></script>
+<script src="js/Scripts-jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+<script src="js/Scripts-jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="js/Scripts-jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="js/Scripts-public.common.js" type="text/javascript"></script>
+<script src="js/Scripts-public.ajaxcart.js" type="text/javascript"></script>
+<script src="js/2014.1.318-kendo.web.min.js" type="text/javascript"></script>
+<script src="js/Scripts-jquery.nivo.slider.js" type="text/javascript"></script>
+<script src="js/Scripts-jquery.magnific-popup.js" type="text/javascript"></script>
+
+    
+    <link href="css/Content-jquery.bxslider.css" rel="stylesheet">
+    <script src="js/lib-jquery.bxslider.js"></script>
+
+    <link href="css/video-YTPlayer.css" rel="stylesheet">
+    
+    
+    
+    
+<link rel="shortcut icon" href="favicons/cutebd.biz-favicon.ico">
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            }; if (!f._fbq) f._fbq = n;
+            n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+        }(window,
+        document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '507276246099051');
+        fbq('track', "PageView");
+        fbq('track', 'AddToWishlist');
+        fbq('track', 'InitiateCheckout');
+        fbq('track', 'AddPaymentInfo');
+        fbq('track', 'Purchase', { value: '0.00', currency: 'USD' });
+        fbq('track', 'Lead');
+        fbq('track', 'CompleteRegistration');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="images/tr">
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+<body>
+    
+
+
+
+<div id="dialog-notifications-success" title="Notification" style="display:none;">
+</div>
+<div id="dialog-notifications-error" title="Error" style="display:none;">
+</div>
+<div id="bar-notification" class="bar-notification">
+    <span class="close" title="Close"> </span>
+</div>
+
+
+
+<div class="master-wrapper-page">
+	
+    
+
+
+<div class="header">
+
+    <div class="header-top">
+        <div class="master-wrapper-main">
+            <div class="header-links-wrapper">
+                
+
+
+
+<div class="header-links">
+    <ul>
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+            <li>
+                <a href="wishlist.html" class="ico-wishlist">
+                    <span class="wishlist-qty">(0)</span>
+                </a>
+            </li>
+                    <li>
+                <a id="login-model" href="#" class="ico-login" onclick="loginAjax()">Log in / Register</a>
+            </li>
+        
+        
+    </ul>
+    
+    
+    <div id="window"></div>
+    
+
+    <script>
+        var returnUrl = '';
+        var Url = 'http://cutebd.biz/';
+        var actionName = 'index';
+        var controllerName = 'home';
+        $(document).ready(function () {
+            
+           
+            if (returnUrl != "" && controllerName == "home") {
+                if (actionName == "index") {
+                    loginAjax();
+                }
+            }
+
+        });
+       
+        function loginAjax() {
+            var data = $("#window");
+
+           
+            //$.magnificPopup.open({
+            //    items: {
+            //        src: '.login-page'
+            //    },
+            //    closeBtnInside: true
+
+            //    // You may add options here, they're exactly the same as for $.fn.magnificPopup call
+            //    // Note that some settings that rely on click event (like disableOn or midClick) will not work here
+            //});
+            $.ajax({
+                type: "GET",
+                url: '/login',
+                dataType: "json",
+                success: function (response) {
+                    $(data).html(response.data);
+                    $.magnificPopup.open({
+                        items: {
+                            src: '.login-page'
+                        },
+                        closeBtnInside: true
+
+                        // You may add options here, they're exactly the same as for $.fn.magnificPopup call
+                        // Note that some settings that rely on click event (like disableOn or midClick) will not work here
+                    });
+                } , beforeSend: function () {
+                    displayAjaxLoading(true);
+                },
+            complete: function () {
+                displayAjaxLoading(false);
+            }
+            });
+           
+                
+        }
+        
+
+
+
+    </script>
+
+    <style>
+        .top-notification-list {
+            max-width: 380px;
+            background: #fff;
+            z-index: 9999;
+            /*border: 1px solid #c1c1c1;*/
+            padding: 0;
+            margin: 0;
+        }
+
+            .top-notification-list li {
+                float: none;
+                display: block;
+                border-bottom: 1px solid #c1c1c1;
+                width: 99%;
+            }
+
+            .top-notification-list .view-all {
+                width: 100%;
+                padding: 5% 0;
+                border: none;
+                border-bottom: none;
+                color: #111;
+                text-align: center;
+            }
+
+        .order-notification {
+            position: fixed;
+            bottom: 1%;
+            right: 1%;
+            background: #f1f1f1;
+            /*border:1px solid #c1c1c1;*/
+            display: none;
+            background: #f1f1f1;
+            padding: 15px;
+            /*border:1px solid #c1c1c1;*/
+            box-shadow: 0 0 5px #c1c1c1;
+        }
+
+        .login-page {
+            /*display:none;*/
+            max-width: 380px;
+            margin: 0 auto;
+            background: #f1f1f1;
+            border: 1px solid #c1c1c1;
+            border-radius: 5px;
+        }
+
+        .k-window {
+            margin: 0 auto;
+        }
+
+        div.k-window-content {
+            margin-top: 28px;
+        }
+    </style>
+
+</div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-logo-search">
+        <div class="master-wrapper-main">
+            
+            <div class="header-menu">
+                <div class="header-logo ">
+                    <a href="cutebd.html">
+                        
+                        <img src="images/SiteLogo-Cute-Logo-100.png">
+                    </a>
+                </div>
+                
+
+<script src="js/pickli-jquery.pickli.js"></script>
+<style>
+    .subCategoryIcon {
+        float: right;
+    }
+
+    .boxFeaturedProduct {
+        float: left;
+        width: 23%;
+        padding: 1%;
+    }
+
+    .featuredProduct {
+        width: 75%;
+    }
+
+    .boxFeaturedProduct .product-item {
+        width: 96%;
+        padding: 5% 1%;
+        margin: 1%;
+        text-align: center;
+    }
+
+    .boxFeaturedProduct h1 {
+        margin-bottom: 15px;
+        width: 98%;
+        padding: 1%;
+    }
+
+    .all-menu {
+        width: 15%;
+    }
+
+    .dropdown-menu {
+        width: 75%;
+    }
+</style>
+
+
+
+
+
+
+
+<ul class="top-menu">
+        <li>
+            <a href="cutebd.html"><img src="images/Content-Home-24.png" alt="Alternate Text"></a>
+        </li>
+            <li>
+                <a href="soap.html">
+                    Soap
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+            <li>
+                <a href="cute-hair-care-range.html">
+                    Hair Care
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+            <li>
+                <a href="oral-care-2.html">
+                    Oral care
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+            <li>
+                <a href="perfume.html">
+                    Perfume
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+            <li>
+                <a href="winter-care.html">
+                    Winter Care
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+            <li>
+                <a href="skin-care.html">
+                    Skin Care
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+            <li>
+                <a href="mens-care.html">
+                    Men's Care
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+            <li>
+                <a href="baby-care.html">
+                    Baby Care
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+            <li>
+                <a href="color-cosmetics.html">
+                    Color Cosmetics
+                    
+                    
+                </a>
+
+                
+                
+                
+                
+
+                
+                
+            </li>
+    <div class="clear"></div>
+</ul>
+<div class="clearfix" id="megamenu-responsive">
+    <ul id="megamenu-responsive-root">
+        <li class="menu-toggle">
+            <p></p>
+            
+        </li>
+        <li class="root">
+            <ul>
+                <li class="home-menu">
+                    <a href="cutebd.html"><span>Home</span></a>
+                </li>
+                    <li class="">
+                        <a href="soap.html">
+                            Soap
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="cute-hair-care-range.html">
+                            Hair Care
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="oral-care-2.html">
+                            Oral care
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="perfume.html">
+                            Perfume
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="winter-care.html">
+                            Winter Care
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="skin-care.html">
+                            Skin Care
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="mens-care.html">
+                            Men's Care
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="baby-care.html">
+                            Baby Care
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="color-cosmetics.html">
+                            Color Cosmetics
+                            </a>
+                    </li>
+            </ul>
+
+        </li>
+    </ul>
+</div>
+
+
+<div class="clear"></div>
+<style>
+    .sublist .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+    }
+</style>
+
+
+<script type="text/javascript">
+    $('li', '.top-menu').on('mouseenter', function () {
+        //$('a', $(this)).first().fadeIn(300);
+        if (!$(this).parent().hasClass('top-menu')) {
+            var width = $(this).innerWidth();
+            $('.sublist', $(this)).first().css('left', width + 15);
+        }
+        $('.sublist', $(this)).first().fadeIn();
+        //$('.top-menu-triangle', $(this)).addClass('active');
+    });
+
+    $('li', '.top-menu').on('mouseleave', function () {
+        //$('a', $(this)).first().fadeOut(300);
+        $('.sublist', $(this)).first().hide();
+        //$('.top-menu-triangle', $(this)).hide(300);
+    });
+    $('.top-menu li .sublist .close').click(function () {
+        $(".top-menu li .sublist").delay(300).hide();
+    })
+    //$(document).ready(function ()
+    //{
+    //	$('.top-menu').pickli({
+    //		resize: true,
+    //		selectAlign: 'left'
+    //	});
+    //});
+
+</script>
+
+                <div class="shoppingCart">
+                    <div id="topcartlink" class="EmptyItem">
+	
+	<a href="cart.html" class="ico-cart">
+		 <span class="cart-qty">
+			 (0)
+		</span>	  
+	</a>
+	<div class="clear"></div>
+</div>
+
+	<script type="text/javascript">
+		$(document).ready(function ()
+		{
+			
+			$('.header').on('mouseenter', '#topcartlink', function ()
+			{
+				$('#flyout-cart').addClass('active');
+			});
+			$('.header').on('mouseleave', '#topcartlink', function ()
+			{
+				$('#flyout-cart').removeClass('active');
+			});
+			$('.header').on('mouseenter', '#flyout-cart', function ()
+			{
+				$('#flyout-cart').addClass('active');
+			});
+			$('.header').on('mouseleave', '#flyout-cart', function ()
+			{
+				$('#flyout-cart').removeClass('active');
+			});
+		});
+	</script>
+
+
+                    
+<div id="flyout-cart" class="flyout-cart">
+    <div class="mini-shopping-cart">
+        <div class="count">
+You have no items in your shopping cart.        </div>
+    </div>
+</div>
+
+
+<script>
+    $("#cart-summery .loader").hide();
+    $("#cart-summery  .update-cart-button").click(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: '/UpdateCartItem',
+            data: $("#cart-summery #cartItem").serialize(),
+            dataType: "json",
+            success: function (response) {
+                //var window = $("#cart-summery");
+                //window.html(response.updatecart + "|");
+                $("#flyout-cart").replaceWith(response.updatecart);
+                $(".shoppingCart #flyout-cart").replaceWith(response.updatecart);
+                $("#topcartlink .cart-qty").text(response.cartItem);
+                if (response.cartItem < 1) {
+                    $("#topcartlink").removeClass("FillItem");
+                } else {
+                    $("#topcartlink").addClass("FillItem");
+                }
+                //$("#flyout-cart").show();
+                //if (!window.data("kendoWindow")) {
+                //    window.kendoWindow({
+                //        width: "600px",
+                //        title: "Cart Summery",
+                //        actions: [
+                //            "Pin",
+                //            "Minimize",
+                //            "Maximize",
+                //            "Close"
+                //        ]
+                //    }).Center();
+                //}
+                //if (response.updatetopcartsectionhtml) {
+                //    $(".cart-qty").html(response.updatetopcartsectionhtml);
+                //}
+                //if (response.updatetopwishlistsectionhtml) {
+                //    $(AjaxCart.topwishlistselector).html(response.updatetopwishlistsectionhtml);
+                //}
+                //if (response.updateflyoutcartsectionhtml) {
+                //    $(AjaxCart.flyoutcartselector).replaceWith(response.updateflyoutcartsectionhtml);
+                //}
+            },
+            beforeSend: function () {
+                $("#cart-summery .loader").show();
+            },
+            complete: function () {
+                $("#cart-summery .loader").hide();
+            }
+        });
+        //$("#cart-summery .qty-input").kendoNumericTextBox();
+    });
+    //$("#cart-summery .qty-input").kendoNumericTextBox();
+    //$('#cart-summery').magnificPopup({
+    //    type: 'inline'
+    //});
+    $(".continue-shopping-button").click(function (e) {
+        e.preventDefault();
+        $.magnificPopup.close();
+    });
+</script>
+                </div>
+                <div class="clear"></div>
+            </div>
+           
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+<script src="js/MegaMenu-Script.js"></script>
+
+<script type="text/javascript">
+    var numLiItem = 0;
+    numLiItem = $("#menu ul li.level-1").length;
+    var moreInsert1 = 4;
+    var moreInsert2 = 3;
+    var sticky = 1;
+    var htmlLiHide1 = getHtmlHide1(moreInsert1, numLiItem);
+    var htmlLiHide2 = getHtmlHide2(moreInsert2, numLiItem);
+    var htmlMenu = $("#menu ul.ul_mega_menu").html();
+    if (moreInsert1 > 0 && moreInsert2 > 0) {
+        window.onorientationchange = function () {
+            refeshMenuIpad(moreInsert1, moreInsert2, htmlLiHide1, htmlLiHide2);
+            //addMoreOnLoad(moreInsert1, moreInsert2, numLiItem, htmlLiHide1, htmlLiHide2);
+        }
+    }
+    $('document').ready(function () {
+        $('#megamenu-responsive-root li.parent').prepend('<p>+');
+        $('.menu-toggle').click(function () {
+            $('.root').toggle('slow');
+        });
+        $('#megamenu-responsive-root li.parent > p').click(function () {
+            if ($(this).text() == '+') {
+                $(this).parent('li').children('ul').slideDown(300);
+                $(this).text('-');
+            } else {
+                $(this).parent('li').children('ul').slideUp(300);
+                $(this).text('+');
+            }
+        });
+        if (moreInsert1 > 0 && moreInsert2 > 0) {
+            addMoreOnLoad(moreInsert1, moreInsert2, numLiItem, htmlLiHide1, htmlLiHide2);
+            addMoreResponsive(moreInsert1, moreInsert2, numLiItem, htmlLiHide1, htmlLiHide2);
+        }
+    });;
+
+    function hoverMenu() {
+        $("li a.title_menu_parent").hover(function () {
+            $(this).next().slideDown('fast');
+        }, function () {
+            $(this).parent().mouseleave(function () {
+                $(".options_list").slideUp('fast');
+            });
+        });
+    }
+    $('document').ready(function () {
+        hoverMenu();
+    });
+    $('document').ready(function () {
+        $(window).resize(function () {
+            hoverMenu();
+        });
+    });;
+
+    $(document).ready(function () {
+        //var from = $(".header-logo-search").offset().top;
+        $(".header-logo-search").css({ "position": "fixed", width: "100%", "z-index": 110 })
+        var menuOffset = $('.header-logo-search').offset().top;
+
+        var adminHeader = $(".admin-header-links").length;
+
+        var menutop = 35;
+        if (adminHeader) {
+            menutop += 27;
+        }
+
+        if (menuOffset > menutop) {
+            menuOffset = menutop;
+            menutop = 0;
+        }
+
+        $(".header-logo-search").css({ "top": menutop })
+        
+
+        $(document).scroll(function () {
+            var menu = $('.header-logo-search').offset();
+            
+            menutop -= (menu.top - menuOffset);
+            if (menutop <= 0) {
+                menutop = 0;
+            }
+
+            
+            $(".header-logo-search").css({ "top": menutop });
+
+
+        });
+    });
+
+</script>
+	<div class="master-wrapper-content">
+		<script type="text/javascript">
+			AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+		</script>
+		
+		
+				
+
+				
+				
+				
+				
+				
+				
+				<div class="ajax-loading-block-window" style="display: none">
+					<div class="loading-image">
+					</div>
+				</div>
+
+				
+
+
+
+
+<div class="slider">
+    
+
+<div class="slider-wrapper theme-default">
+    <div id="nivo-slider" class="nivoSlider">
+                    <a href="https://www.facebook.com/cutebangladesh/">
+                <img src="images/thumbs-0000154.png" data-thumb="http://cutebd.biz/content/images/thumbs/0000154.png" data-transition="" alt="" title="">
+            </a>
+
+                    <a href="after-shave-lotion.html">
+                <img src="images/thumbs-0000122.png" data-thumb="http://cutebd.biz/content/images/thumbs/0000122.png" data-transition="" alt="" title="">
+            </a>
+
+                    <a href="http://cute.com.bd/cute-coconut-hair-oil">
+                <img src="images/thumbs-0000123.png" data-thumb="http://cutebd.biz/content/images/thumbs/0000123.png" data-transition="slideInLeft" alt="" title="">
+            </a>
+
+                    <a href="http://cute.com.bd/flouride-toothpaste">
+                <img src="images/thumbs-0000124.png" data-thumb="http://cutebd.biz/content/images/thumbs/0000124.png" data-transition="" alt="" title="">
+            </a>
+
+                    <img src="images/thumbs-0000412.png" data-thumb="http://cutebd.biz/content/images/thumbs/0000412.png" data-transition="" alt="" title="">
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#nivo-slider').nivoSlider();
+    });
+</script>
+
+</div>
+
+  
+    <div class="center-3">
+        
+        
+
+
+
+
+<div class="page home-page ">
+    
+    <div id="loader" style="display: none;">
+        <div class="loader" style="display: none;">
+            <img alt="loading" src="images/img-loading.gif">
+        </div>
+    </div>
+    <div class="page-body">
+        
+        
+        
+        
+
+        
+        <div class="master-wrapper-main">
+            <div class="featured-product">
+                
+	<div class="product-grid home-page-product-grid">
+        <div class="columns">
+            <header class="title one">Featured Product</header>
+            <div class="blank-space"></div>
+            <div class="title two">
+                Your need of the season
+            </div>
+        </div>
+		
+
+
+<style>
+    .product-item {
+        position: relative;
+    }
+</style>
+<div class="product-item" data-productid="161">
+    <div class="picture">
+        <a href="jasmine-soap.html" title="/jasmine-soap">
+            <img alt="Picture of Jasmine (125 gm)" src="images/thumbs-0000157_jasmine-125-gm_240.png" title="Show details for Jasmine (125 gm)">
+
+        </a>
+
+        
+        <h2 class="product-title">
+            <a href="jasmine-soap.html" title="/jasmine-soap">Jasmine (125 gm)</a>
+
+        </h2>
+        <div class="description">
+            Chronicles of unearthed fragrances using the best of the finest flowers.
+        </div>
+        
+
+    </div>
+    <div class="product-more">
+        <a href="jasmine-soap.html" title="Show details for Jasmine (125 gm)">More</a>
+    </div>
+    
+    
+</div>
+
+
+
+
+<style>
+    .product-item {
+        position: relative;
+    }
+</style>
+<div class="product-item" data-productid="192">
+    <div class="picture">
+        <a href="jasmine-30-gm.html" title="/jasmine-30-gm">
+            <img alt="Picture of Jasmine (30 gm)" src="images/thumbs-0000349_jasmine-30-gm_240.png" title="Show details for Jasmine (30 gm)">
+
+        </a>
+
+        
+        <h2 class="product-title">
+            <a href="jasmine-30-gm.html" title="/jasmine-30-gm">Jasmine (30 gm)</a>
+
+        </h2>
+        <div class="description">
+            Chronicles of unearthed fragrances using the best of the finest flowers.
+        </div>
+        
+
+    </div>
+    <div class="product-more">
+        <a href="jasmine-30-gm.html" title="Show details for Jasmine (30 gm)">More</a>
+    </div>
+    
+    
+</div>
+
+
+
+
+<style>
+    .product-item {
+        position: relative;
+    }
+</style>
+<div class="product-item" data-productid="191">
+    <div class="picture">
+        <a href="jasmine-75-gm.html" title="/jasmine-75-gm">
+            <img alt="Picture of Jasmine (75 gm)" src="images/thumbs-0000236_jasmine-75-gm_240.png" title="Show details for Jasmine (75 gm)">
+
+        </a>
+
+        
+        <h2 class="product-title">
+            <a href="jasmine-75-gm.html" title="/jasmine-75-gm">Jasmine (75 gm)</a>
+
+        </h2>
+        <div class="description">
+            Chronicles of unearthed fragrances using the best of the finest flowers.
+        </div>
+        
+
+    </div>
+    <div class="product-more">
+        <a href="jasmine-75-gm.html" title="Show details for Jasmine (75 gm)">More</a>
+    </div>
+    
+    
+</div>
+
+
+
+
+<style>
+    .product-item {
+        position: relative;
+    }
+</style>
+<div class="product-item" data-productid="111">
+    <div class="picture">
+        <a href="cute-lemon.html" title="/cute-lemon">
+            <img alt="Picture of Lemon (125 gm)" src="images/thumbs-0000126_lemon-125-gm_240.png" title="Show details for Lemon (125 gm)">
+
+        </a>
+
+        
+        <h2 class="product-title">
+            <a href="cute-lemon.html" title="/cute-lemon">Lemon (125 gm)</a>
+
+        </h2>
+        <div class="description">
+            Play, Jump and live youthful
+        </div>
+        
+
+    </div>
+    <div class="product-more">
+        <a href="cute-lemon.html" title="Show details for Lemon (125 gm)">More</a>
+    </div>
+    
+    
+</div>
+
+
+
+	</div>
+
+            </div>
+            <div class="fb-activty">
+                <div id="fb-root"></div>
+                <script>
+                    (function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_IN/sdk.js#xfbml=1&appId=473750439395708&version=v2.0";
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));
+                </script>
+                
+                
+
+                <div class="fb-like-box" data-href="https://www.facebook.com/cutebangladesh" data-colorscheme="light" data-show-faces="false" data-header="true" data-stream="true" data-show-border="true" data-height="500px">
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <section id="cute-video" class="clear dontHide hideme article">
+            <div class="mk-video-mask">
+                
+            </div>
+            <a id="video-volume" onclick="$('#bgndVideo').toggleVolume()" href="cutebd.html"><i class="icon-volume-down"></i></a>
+            <div id="P1" class="player" style="display: block; margin: auto; background: rgba(0,0,0,0.5)" data-property="{videoURL:'https://www.youtube.com/watch?v=g2pg7buXofY',containment:'#cute-video',startAt:0,mute:false,autoPlay:true,loop:true,opacity:1}"></div>
+        </section>
+        
+        
+        <div class="master-wrapper-main">
+
+            <div class="category-grid-title">
+                <header class="title one">Cute Product Category</header>
+                <div class="blank-space"></div>
+                <div class="title two">
+                    Cute brings you the tropical knowledge of personal care bonded with honest values to caress your beauty. We believe, Beauty is a gift which comes through self-belief, confidence &amp; continuous personal caring.
+                </div>
+            </div>
+
+        </div>
+        
+            <div class="product-grid home-page-product-grid soap">
+                
+
+                        <div class="home-product-category-grid soap">
+                            <div class="master-wrapper-main">
+                                <div class="home-product-category-img dontHide hideme home-product-category right">
+                                    <img alt="Picture of Neem (125 gm)" src="images/thumbs-0000127_neem-125-gm_240.png" title="Show details for Neem (125 gm)">
+                                </div>
+
+                                
+                                <div class="home-product-category-desc home-product-category">
+                                    <div class="product-title">Neem (125 gm)</div>
+                                    <div class="product-short-desc">Natural Protection</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">Neem oil’s anti-bacterial and moisturizing properties are known for centuries. It works wonders for oily an...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="cute-neem.html">More</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="home-product-category-grid soap">
+                            <div class="master-wrapper-main">
+
+
+                                
+                                <div class="home-product-category-desc home-product-category  left">
+                                    <div class="product-title">Neem (75 gm)</div>
+                                    <div class="product-short-desc">Natural Protection</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">Neem oil’s anti-bacterial and moisturizing properties are known for centuries. It works wonders for oily an...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="neem-75-gm.html">More</a></div>
+                                </div>
+                                <div class="home-product-category-img dontHide hideme home-product-category">
+                                    <img alt="Picture of Neem (75 gm)" src="images/thumbs-0000246_neem-75-gm_240.png" title="Show details for Neem (75 gm)">
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+
+            </div>
+            <div class="product-grid home-page-product-grid cute-hair-care-range">
+                
+
+                        <div class="home-product-category-grid cute-hair-care-range">
+                            <div class="master-wrapper-main">
+                                <div class="home-product-category-img dontHide hideme home-product-category right">
+                                    <img alt="Picture of Perfumed Coconut Oil (160 ml)" src="images/thumbs-0000213_perfumed-coconut-oil-160-ml_240.png" title="Show details for Perfumed Coconut Oil (160 ml)">
+                                </div>
+
+                                
+                                <div class="home-product-category-desc home-product-category">
+                                    <div class="product-title">Perfumed Coconut Oil (160 ml)</div>
+                                    <div class="product-short-desc">The healthiest oil on earth.</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">The use of coconut oil on hair helps to reduce protein loss in both damaged as well as undamaged hair. Coconut oi...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="perfumed-coconut-oil-160-ml.html">More</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="home-product-category-grid cute-hair-care-range">
+                            <div class="master-wrapper-main">
+
+
+                                
+                                <div class="home-product-category-desc home-product-category  left">
+                                    <div class="product-title">Perfumed Coconut Oil (330 ml)</div>
+                                    <div class="product-short-desc">The healthiest oil on earth.</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">The use of coconut oil on hair helps to reduce protein loss in both damaged as well as undamaged hair. Coconut oi...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="cute-coconut-hair-oil.html">More</a></div>
+                                </div>
+                                <div class="home-product-category-img dontHide hideme home-product-category">
+                                    <img alt="Picture of Perfumed Coconut Oil (330 ml)" src="images/thumbs-0000190_perfumed-coconut-oil-330-ml_240.png" title="Show details for Perfumed Coconut Oil (330 ml)">
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <div class="home-product-category-grid cute-hair-care-range">
+                            <div class="master-wrapper-main">
+                                <div class="home-product-category-img dontHide hideme home-product-category right">
+                                    <img alt="Picture of Perfumed Coconut Oil (45 ml)" src="images/thumbs-0000215_perfumed-coconut-oil-45-ml_240.png" title="Show details for Perfumed Coconut Oil (45 ml)">
+                                </div>
+
+                                
+                                <div class="home-product-category-desc home-product-category">
+                                    <div class="product-title">Perfumed Coconut Oil (45 ml)</div>
+                                    <div class="product-short-desc">The healthiest oil on earth.</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">The use of coconut oil on hair helps to reduce protein loss in both damaged as well as undamaged hair. Coconut oi...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="perfumed-coconut-oil-45-ml.html">More</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="home-product-category-grid cute-hair-care-range">
+                            <div class="master-wrapper-main">
+
+
+                                
+                                <div class="home-product-category-desc home-product-category  left">
+                                    <div class="product-title">Perfumed Coconut Oil (90 ml)</div>
+                                    <div class="product-short-desc">The healthiest oil on earth.</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">The use of coconut oil on hair helps to reduce protein loss in both damaged as well as undamaged hair. Coconut oi...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="perfumed-coconut-oil-90-ml.html">More</a></div>
+                                </div>
+                                <div class="home-product-category-img dontHide hideme home-product-category">
+                                    <img alt="Picture of Perfumed Coconut Oil (90 ml)" src="images/thumbs-0000214_perfumed-coconut-oil-90-ml_240.png" title="Show details for Perfumed Coconut Oil (90 ml)">
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+
+            </div>
+            <div class="product-grid home-page-product-grid oral-care-2">
+                
+
+                        <div class="home-product-category-grid oral-care-2">
+                            <div class="master-wrapper-main">
+                                <div class="home-product-category-img dontHide hideme home-product-category right">
+                                    <img alt="Picture of Fluoride Toothpaste (100 gm)" src="images/thumbs-0000228_fluoride-toothpaste-100-gm_240.png" title="Show details for Fluoride Toothpaste (100 gm)">
+                                </div>
+
+                                
+                                <div class="home-product-category-desc home-product-category">
+                                    <div class="product-title">Fluoride Toothpaste (100 gm)</div>
+                                    <div class="product-short-desc">Effective everyday dental care for you and your family. </div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">Flouride toothpaste, made in association with the american association IFF, is designed for cavity protection and...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="fluoride-toothpaste-100-gm.html">More</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="home-product-category-grid oral-care-2">
+                            <div class="master-wrapper-main">
+
+
+                                
+                                <div class="home-product-category-desc home-product-category  left">
+                                    <div class="product-title">Fluoride Toothpaste (200 gm)</div>
+                                    <div class="product-short-desc">Effective everyday dental care for you and your family. </div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">Flouride toothpaste, made in association with the american association IFF, is designed for cavity protection and...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="flouride-toothpaste.html">More</a></div>
+                                </div>
+                                <div class="home-product-category-img dontHide hideme home-product-category">
+                                    <img alt="Picture of Fluoride Toothpaste (200 gm)" src="images/thumbs-0000045_fluoride-toothpaste-200-gm_240.png" title="Show details for Fluoride Toothpaste (200 gm)">
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <div class="home-product-category-grid oral-care-2">
+                            <div class="master-wrapper-main">
+                                <div class="home-product-category-img dontHide hideme home-product-category right">
+                                    <img alt="Picture of Fluoride Toothpaste (50 gm)" src="images/thumbs-0000229_fluoride-toothpaste-50-gm_240.png" title="Show details for Fluoride Toothpaste (50 gm)">
+                                </div>
+
+                                
+                                <div class="home-product-category-desc home-product-category">
+                                    <div class="product-title">Fluoride Toothpaste (50 gm)</div>
+                                    <div class="product-short-desc">Effective everyday dental care for you and your family. </div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">Flouride toothpaste, made in association with the american association IFF, is designed for cavity protection and...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="fluoride-toothpaste-50-gm.html">More</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+            </div>
+            <div class="product-grid home-page-product-grid winter-care">
+                
+
+                        <div class="home-product-category-grid winter-care">
+                            <div class="master-wrapper-main">
+
+
+                                
+                                <div class="home-product-category-desc home-product-category  left">
+                                    <div class="product-title">Cold Cream (100 gm)</div>
+                                    <div class="product-short-desc">In homes around Bangladesh for 4 decades</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">One of our flagship products, Cute cold cream, has been in homes around Bangladesh for 4 decades. Unparalleled qu...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="cute-cold-cream.html">More</a></div>
+                                </div>
+                                <div class="home-product-category-img dontHide hideme home-product-category">
+                                    <img alt="Picture of Cold Cream (100 gm)" src="images/thumbs-0000378_cold-cream-100-gm_240.png" title="Show details for Cold Cream (100 gm)">
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <div class="home-product-category-grid winter-care">
+                            <div class="master-wrapper-main">
+                                <div class="home-product-category-img dontHide hideme home-product-category right">
+                                    <img alt="Picture of Cold Cream (50 gm)" src="images/thumbs-0000377_cold-cream-50-gm_240.png" title="Show details for Cold Cream (50 gm)">
+                                </div>
+
+                                
+                                <div class="home-product-category-desc home-product-category">
+                                    <div class="product-title">Cold Cream (50 gm)</div>
+                                    <div class="product-short-desc">In homes around Bangladesh for 4 decades</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">One of our flagship products, Cute cold cream, has been in homes around Bangladesh for 4 decades. Unparalleled qu...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="cold-cream-50-gm.html">More</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+            </div>
+            <div class="product-grid home-page-product-grid mens-care">
+                
+
+                        <div class="home-product-category-grid mens-care">
+                            <div class="master-wrapper-main">
+
+
+                                
+                                <div class="home-product-category-desc home-product-category  left">
+                                    <div class="product-title"> After Shave Lotion (100 ml)</div>
+                                    <div class="product-short-desc">Leave a mark everywhere.</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;"> Cute aftershave nourishes the skin, diffuses redness, soothes razor burns, eases irritation and bumps that ...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="after-shave-lotion.html">More</a></div>
+                                </div>
+                                <div class="home-product-category-img dontHide hideme home-product-category">
+                                    <img alt="Picture of  After Shave Lotion (100 ml)" src="images/thumbs-0000298_after-shave-lotion-100-ml_240.png" title="Show details for  After Shave Lotion (100 ml)">
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <div class="home-product-category-grid mens-care">
+                            <div class="master-wrapper-main">
+                                <div class="home-product-category-img dontHide hideme home-product-category right">
+                                    <img alt="Picture of After Shave Lotion (40 ml)" src="images/thumbs-0000296_after-shave-lotion-40-ml_240.png" title="Show details for After Shave Lotion (40 ml)">
+                                </div>
+
+                                
+                                <div class="home-product-category-desc home-product-category">
+                                    <div class="product-title">After Shave Lotion (40 ml)</div>
+                                    <div class="product-short-desc">Leave a mark everywhere.</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;"> Cute aftershave nourishes the skin, diffuses redness, soothes razor burns, eases irritation and bumps that ...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="after-shave-lotion-40-ml.html">More</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="home-product-category-grid mens-care">
+                            <div class="master-wrapper-main">
+
+
+                                
+                                <div class="home-product-category-desc home-product-category  left">
+                                    <div class="product-title">After Shave Lotion (50 ml)</div>
+                                    <div class="product-short-desc">Leave a mark everywhere.</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;"> Cute aftershave nourishes the skin, diffuses redness, soothes razor burns, eases irritation and bumps that ...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="after-shave-lotion-50-ml.html">More</a></div>
+                                </div>
+                                <div class="home-product-category-img dontHide hideme home-product-category">
+                                    <img alt="Picture of After Shave Lotion (50 ml)" src="images/thumbs-0000297_after-shave-lotion-50-ml_240.png" title="Show details for After Shave Lotion (50 ml)">
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+
+            </div>
+            <div class="product-grid home-page-product-grid color-cosmetics">
+                
+
+                        <div class="home-product-category-grid color-cosmetics">
+                            <div class="master-wrapper-main">
+                                <div class="home-product-category-img dontHide hideme home-product-category right">
+                                    <img alt="Picture of Nail Polish (Prime)" src="images/thumbs-0000133_nail-polish-prime_240.png" title="Show details for Nail Polish (Prime)">
+                                </div>
+
+                                
+                                <div class="home-product-category-desc home-product-category">
+                                    <div class="product-title">Nail Polish (Prime)</div>
+                                    <div class="product-short-desc">The colors you use are just an expression of your personality</div>
+
+                                    <div class="product-desc">
+                                        <p><span style="font-size: 12pt;">Express yourself with Cute Nail Polish, Longer-lasting nail polish that protects moisture of your nails. Cute nai...
+                                    </span></p></div>
+                                    <div class="product-more"><a href="nail-polish-prime.html">More</a></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+            </div>
+    <div id="cat-scrollup">
+        <ul>
+                    <li id="soap" title="Soap">
+                        S
+                    </li>
+                    <li id="cute-hair-care-range" title="Hair Care">
+                        H
+                    </li>
+                    <li id="oral-care-2" title="Oral care">
+                        O
+                    </li>
+                    <li id="winter-care" title="Winter Care">
+                        W
+                    </li>
+                    <li id="mens-care" title="Men's Care">
+                        M
+                    </li>
+                    <li id="color-cosmetics" title="Color Cosmetics">
+                        C
+                    </li>
+            
+        </ul>
+
+</div>
+
+
+
+
+        
+        
+        
+    </div>
+</div>
+<style>
+    .title {
+        color: #757575;
+        font-family: Lato;
+        font-size: 17px;
+        margin: 10px auto;
+        width: 680px;
+        font-weight: 100;
+        max-width: 1100px;
+    }
+
+    #cute-video {
+        border-bottom: 1px solid #c7c7c7;
+        position: relative;
+    }
+
+    .product-grid .item-box {
+        padding: 0;
+    }
+
+
+    /*p {
+        line-height: 1.8em;
+    }*/
+
+    #video-volume {
+        bottom: 30px;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 24px;
+        height: 25px;
+        left: 50%;
+        margin-left: -12px;
+        opacity: 0.5;
+        position: absolute;
+        width: 25px;
+        z-index: 10;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="js/Scripts-plugins.js"></script>
+
+
+
+<script src="js/Scripts-main.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var videoAll = $(window).height();
+        var windowHeight = $(window).height();
+        var scrollTop = $(window).height() - $('#cat-scrollup').height();
+        //$('#cat-scrollup').css({ top: scrollTop / 2 });
+        var headerHeight = $("header").height();
+        var articleHeight = windowHeight - headerHeight;
+        // var sliderHeight = Math.floor(articleHeight * .5);
+        $(".article").css({ "height": articleHeight + "px" });
+        $('#cute-video').css('height', videoAll);
+
+    });
+    $(window).bind("scroll", function () {
+        /* Scroll Top Btn */
+        if ($(window).width() > 480) {
+            if ($(this).scrollTop() > $(window).height() - 1) {
+                $('#cat-scrollup').fadeIn();
+                $('.scrollup').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+                $('#cat-scrollup').fadeOut();
+            }
+        }
+    });
+    //$(document).ready(function () {
+    //    $('.scrollup').click(function () {
+    //        $("html,body").animate({ scrollTop: 0 }, 1000);
+    //        return false;
+    //    });
+    //});
+    $(document).ready(function () {
+        $('.scrollup').click(function () {
+            $("html,body").animate({ scrollTop: 0 }, 1000);
+            return false;
+        });
+    });
+
+    $('#cat-scrollup ul li').click(function () {
+        var pos = $(this).attr("id");
+        var headerHeight = $("header").height();
+        var topPos = $("." + pos).offset().top - headerHeight;
+        $("html,body").animate({ scrollTop: topPos }, 500);
+        return false;
+    });
+</script>
+
+
+<div id="maps" class="hideme dontHide">
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <div class="map-content">
+        <div class="wpgmappity_container custom-map" id="custom-map"></div>
+    </div>
+    customMap
+</div>
+
+<script src="js/video-jquery.mb.YTPlayer.js"></script>
+        
+    </div>
+
+
+				
+				
+
+			
+			
+		
+		
+<div class="footer pad" id="contact">
+    <div class="master-wrapper-main">
+        <div class="title one no-top">Contact</div>
+        <div class="blank-space"></div>
+        <div class="title two f-bottom">
+            Contact Information
+        </div>
+
+        <div class="columns dontHide">
+            <div class="contact_left">
+                <div class="columns">
+                    
+                    <div class="f-title-two">Visit Our Office</div>
+                    <div class="f-data adress">
+                        <img alt="img" src="images/img-adress-ico.png">
+                        Company: <span>
+                            Mousumi Industries Ltd.
+                        </span>
+                    </div>
+                    <div class="f-data adress">
+                        <img alt="img" src="images/img-adress-ico.png">
+                        Address: <span>
+                            151, Bangshal Road, Dhaka-1100
+                        </span>
+                    </div>
+                    <div class="f-data phone">
+                        <img alt="img" src="images/img-phone-ico.png">
+                        Phone: <span>+91 9008418527 </span>
+                    </div>
+                    <div class="f-data e-mail">
+                        <img alt="img" src="images/img-mail-ico.png">
+                        Email: <span>info@cutebd.biz</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact_left">
+                <div class="columns">
+                   
+                    <div class="f-title-two">Business Hours</div>
+                    <div class="f-data hour-1">
+                        <img alt="img" src="images/img-hours-ico.png">
+                        Sat. - Thu. <span>9am to 5pm</span>
+                    </div>
+                    <div class="f-data hour-2">
+                        <img alt="img" src="images/img-hours-ico.png">
+                        Sat. <span>9am to 5Pm</span>
+                    </div>
+                    <div class="f-data hour-3">
+                        <img alt="img" src="images/img-hours-ico.png">
+                        Fri. <span>Closed</span>
+                    </div>
+                </div>
+            </div>
+            <div class="contact_left">
+                <div class="columns">
+                    
+
+<form action="/common/ContactUsSend" method="post">        <div class="message-error">
+            
+        </div>
+        <div class="peThemeContactForm" id="contact-form">
+        <div class="bay form-horizontal" id="personal">
+            <div class="control-group">
+                <!--name field-->
+                <div class="controls">
+                    <input class="fullname required span9" data-val="true" data-val-required="Enter your name" id="FullName" name="FullName" placeholder="Enter your name" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="FullName" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <!--email field-->
+                <div class="controls">
+                    <input class="email required span9" data-val="true" data-val-email="Wrong email" data-val-required="Enter email" id="Email" name="Email" placeholder="Enter your email address" type="text" value="">
+                    <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <!--message field-->
+                <div class="controls">
+                    <textarea class="enquiry required span9" cols="20" data-val="true" data-val-required="Enter enquiry" id="Enquiry" name="Enquiry" placeholder="Enter your enquiry" rows="2">
+</textarea>
+                    <span class="field-validation-valid" data-valmsg-for="Enquiry" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls send-btn">
+                    <input type="submit" name="send-email" class="button-1 contact-us-button" value="Submit">
+                </div>
+            </div>
+        </div>
+        
+
+    </div>
+</form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<a href="#" class="scrollup">^</a>
+
+<footer>
+    <div class="master-wrapper-main">
+        <div class="copyright">
+            <div class="columns">
+                <div class="footer-link">
+                    Developed by DSN Aerospace Pvt. Ltd
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+
+   
+
+     #maps {
+        height: 500px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .map-content {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    .custom-map {
+        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+
+    #contact {
+        background: none repeat scroll 0 0 #f0f2f4;
+    }
+
+    .pad {
+    }
+
+    footer {
+        color: white;
+    }
+
+        .fiable, footer, footer a {
+            font-size: 15px;
+        }
+
+   
+
+    blank-space {
+        height: 2px;
+        margin: auto;
+        width: 100px;
+    }
+
+    .title.two {
+        color: #757575;
+        /*font-family: "Open Sans",sans-serif;*/
+        font-size: 17px;
+        font-style: italic;
+        margin: 15px auto;
+        width: 80%;
+        padding:0 10%;
+        margin-bottom:10px;
+
+    }
+
+    .f-bottom {
+        margin-bottom: 35px !important;
+    }
+
+    .title {
+        font-weight: 300;
+        text-align: center;
+    }
+
+    #featured-product {
+        position: relative;
+    }
+
+    #messageIcon {
+        position: fixed;
+        top: 29px;
+        right: 0;
+        z-index: 101;
+        height: 50px;
+        right: 59px;
+    }
+
+    .ico-msg {
+        background: url("../../Content/Images/icons/mail.png") no-repeat;
+        padding: 10px 15px;
+    }
+
+    .ico-fb {
+        background: url("../../Content/Images/icons/facebook.jpg ") 0 8px no-repeat;
+        padding: 10px 15px;
+    }
+</style>
+
+<script>
+    $(document).ready(function () {
+
+        $(".footer-click").click(function (e) {
+            e.preventDefault();
+            $(".footer-menu-wrapper").toggle();
+            var up = $(".footer-click a").hasClass('up');
+            var down = $(".footer-click a").hasClass('down');
+            if (up) {
+                $(".footer-click a").removeClass('up').addClass('down');
+            } else if (down) {
+                $(".footer-click a").removeClass('down').addClass('up');
+            } else {
+                $(this).addClass('down');
+            }
+
+        });
+    });
+</script>
+
+
+
+
+
+	</div>
+    
+</div>
+
+
+
+    
+    
+</body>
+</html><html><div style="position: absolute; top: -999px;left: -999px;">This wig has a very large <a href="https://www.leez-extensions.co.uk/">hair extensions</a> amount of hair, and the natural black hair color makes the <a href="https://www.cheaphairforextensions.co.uk/">real hair extensions</a> whole person's temperament very clean. Put on <a href="http://www.cirohair.co.uk/">hair extensions uk</a> such a wig coffee shop and have a cup of <a href="https://www.extensionofbeauty.co.uk/">hair extensions online</a> coffee to read the book, so that you can immediately become a charming literary woman.</div>
+</html>
